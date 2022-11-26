@@ -1,0 +1,44 @@
+syntax = "proto3";
+package pb;
+option go_package = "./proto;pb";
+option csharp_namespace="Pb";   //给C#提供的选项
+// option go_package = "生成位置;包名";
+
+//MsgID:1  //MsgID:201
+message SyncPid{
+  int32 Pid=1;
+}
+
+//MsgID:2
+message Talk{
+  string Content=1;
+}
+
+//MsgID:3
+message Position{
+  float X=1;
+  float Y=2;
+  float Z=3;
+  float V=4;
+}
+
+// MsgID:200
+message BroadCast{
+  int32 Pid=1;
+  int32 Tp=2;
+  oneof Data {
+    string Content=3;
+    Position P=4;
+    int32 ActionData=5;
+  }
+}
+
+//MsgID:202
+message SyncPlayers{
+  repeated Player ps=1;
+}
+
+message Player{
+  int32 Pid=1;
+  Position P=2;
+}
