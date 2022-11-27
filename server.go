@@ -7,7 +7,7 @@ import (
 	"github.com/aceld/zinx/znet"
 )
 
-//当客户端建立连接的时候的hook函数
+// OnConnectionAdd 当客户端建立连接的时候的hook函数
 func OnConnectionAdd(conn ziface.IConnection) {
 	//创建一个玩家
 	player := core.NewPlayer(conn)
