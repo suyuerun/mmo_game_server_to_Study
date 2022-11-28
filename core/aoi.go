@@ -2,9 +2,19 @@ package core
 
 import "fmt"
 
-/*
-   AOI管理模块
-*/
+// 定义 AOI 的边界值
+
+const (
+	AOI_MIN_X  int = 85
+	AOI_MAX_X  int = 410
+	AOI_CNTS_X int = 10
+	AOI_MIN_Y  int = 75
+	AOI_MAX_Y  int = 400
+	AOI_CNTS_Y int = 20
+)
+
+//   AOI管理模块
+
 type AOIManager struct {
 	MinX  int           //区域左边界坐标
 	MaxX  int           //区域右边界坐标
@@ -163,7 +173,7 @@ func (m *AOIManager) AddToGridByPos(pID int, x, y float32) {
 	grid.Add(pID)
 }
 
-//通过横纵坐标把一个Player从对应的格子中删除
+// RemoveFromGridByPos 通过横纵坐标把一个Player从对应的格子中删除
 func (m *AOIManager) RemoveFromGridByPos(pID int, x, y float32) {
 	gID := m.GetGIDByPos(x, y)
 	grid := m.grids[gID]

@@ -1,6 +1,6 @@
 syntax = "proto3";
 package pb;
-option go_package = "./proto;pb";
+option go_package = "./;pb";
 option csharp_namespace="Pb";   //给C#提供的选项
 // option go_package = "生成位置;包名";
 
@@ -11,7 +11,7 @@ message SyncPid{
 
 //MsgID:2
 message Talk{
-  string Content=1;
+  string Content=1;    //聊天内容
 }
 
 //MsgID:3
@@ -25,19 +25,19 @@ message Position{
 // MsgID:200
 message BroadCast{
   int32 Pid=1;
-  int32 Tp=2;
+  int32 Tp=2;           //1-世界聊天  2-玩家位置
   oneof Data {
-    string Content=3;
-    Position P=4;
+    string Content=3;   //聊天的信息
+    Position P=4;       //广播用户的位置
     int32 ActionData=5;
   }
 }
 
-//MsgID:202
+//MsgID:202 同步玩家显示数据
 message SyncPlayers{
   repeated Player ps=1;
 }
-
+//玩家信息
 message Player{
   int32 Pid=1;
   Position P=2;
