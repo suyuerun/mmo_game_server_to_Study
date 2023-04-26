@@ -74,7 +74,7 @@ type Talk struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Content string `protobuf:"bytes,1,opt,name=Content,proto3" json:"Content,omitempty"`
+	Content string `protobuf:"bytes,1,opt,name=Content,proto3" json:"Content,omitempty"` //聊天内容
 }
 
 func (x *Talk) Reset() {
@@ -195,7 +195,7 @@ type BroadCast struct {
 	unknownFields protoimpl.UnknownFields
 
 	Pid int32 `protobuf:"varint,1,opt,name=Pid,proto3" json:"Pid,omitempty"`
-	Tp  int32 `protobuf:"varint,2,opt,name=Tp,proto3" json:"Tp,omitempty"`
+	Tp  int32 `protobuf:"varint,2,opt,name=Tp,proto3" json:"Tp,omitempty"` //1-世界聊天  2-玩家位置
 	// Types that are assignable to Data:
 	//	*BroadCast_Content
 	//	*BroadCast_P
@@ -282,11 +282,11 @@ type isBroadCast_Data interface {
 }
 
 type BroadCast_Content struct {
-	Content string `protobuf:"bytes,3,opt,name=Content,proto3,oneof"`
+	Content string `protobuf:"bytes,3,opt,name=Content,proto3,oneof"` //聊天的信息
 }
 
 type BroadCast_P struct {
-	P *Position `protobuf:"bytes,4,opt,name=P,proto3,oneof"`
+	P *Position `protobuf:"bytes,4,opt,name=P,proto3,oneof"` //广播用户的位置
 }
 
 type BroadCast_ActionData struct {
@@ -299,7 +299,7 @@ func (*BroadCast_P) isBroadCast_Data() {}
 
 func (*BroadCast_ActionData) isBroadCast_Data() {}
 
-//MsgID:202
+//MsgID:202 同步玩家显示数据
 type SyncPlayers struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -347,6 +347,7 @@ func (x *SyncPlayers) GetPs() []*Player {
 	return nil
 }
 
+//玩家信息
 type Player struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
